@@ -1,0 +1,36 @@
+#! bin/bash
+
+apt-get update
+apt-get upgrade
+
+apt-get install -y locate
+apt-get install -y ntp
+apt-get install -y ftpd
+apt-get install -y openssh-server
+apt-get install -y apache2
+
+add-apt-repository ppa:ondrej/php
+apt-get update
+apt-get install -y php5.6
+
+apt-get install default-jdk
+groupadd tomcat
+useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
+cd /tmp
+curl -O http://apache.mirrors.ionfish.org/tomcat/tomcat-8/v8.5.5/bin/apache-tomcat-8.5.5.tar.gz
+mkdir /opt/tomcat
+tar xzvf apache-tomcat-8*tar.gz -C /opt/tomcat --strip-components=1
+
+apt-get update
+apt-get install phpmyadmin php-mbstring php-gettext
+
+apt-get update
+apt-get install postgresql postgresql-contrib
+
+deb https://download.webmin.com/download/repository sarge contrib
+cd /root
+wget http://www.webmin.com/jcameron-key.asc
+apt-key add jcameron-key.asc		
+apt-get install apt-transport-https
+apt-get update
+apt-get install webmin
