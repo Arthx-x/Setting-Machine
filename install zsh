@@ -1,0 +1,10 @@
+# installing ZSH 
+# apt update && apt install zsh git curl -y
+# installing OHMYZSH
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" 
+# installing ZINIT 
+bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
+# installing extensions
+echo " zinit light zdharma/fast-syntax-highlighting \r\n zinit light zsh-users/zsh-autosuggestions \r\n zinit light zsh-users/zsh-completions" >> /root/.zshrc
+# configuring the file
+sed -i 's,robbyrussell,bira,g' /root/.zshrc
